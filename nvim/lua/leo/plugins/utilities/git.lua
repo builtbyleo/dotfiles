@@ -11,6 +11,13 @@ return {
 				-- char_insert = "#3fb950",
 				-- char_delete = "#ff7b72",
 			},
+			keymaps = {
+				view = {
+					toggle_explorer = "<leader>e", -- Toggle explorer visibility (explorer mode only)
+					next_hunk = "]h", -- Jump to next change
+					prev_hunk = "[h", -- Jump to previous change
+				},
+			},
 		},
        -- stylua: ignore
         keys = {
