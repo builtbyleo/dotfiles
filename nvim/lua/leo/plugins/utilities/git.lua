@@ -12,11 +12,10 @@ return {
 				-- char_delete = "#ff7b72",
 			},
 		},
-       -- stylua: ignore
-        keys = {
-            { "<leader>gd",":CodeDiff file HEAD<CR>", desc = "Diff entire buffer" },
-        }
-,
+	      -- stylua: ignore
+	       keys = {
+	           { "<leader>gd",":CodeDiff file HEAD<CR>", desc = "Diff entire buffer" },
+	       },
 	},
 	{
 		"echasnovski/mini.diff",
