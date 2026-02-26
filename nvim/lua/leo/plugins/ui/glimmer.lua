@@ -11,5 +11,8 @@ return {
 				enabled = true,
 			},
 		},
+		substitute = {
+			enabled = true,
+		},
 	},
 }

@@ -19,11 +19,10 @@ return {
 				},
 			},
 		},
-       -- stylua: ignore
-        keys = {
-            { "<leader>gd",":CodeDiff file HEAD<CR>", desc = "Diff entire buffer" },
-        }
-,
+	      -- stylua: ignore
+	       keys = {
+	           { "<leader>gd",":CodeDiff file HEAD<CR>", desc = "Diff entire buffer" },
+	       },
 	},
 	{
 		"echasnovski/mini.diff",
