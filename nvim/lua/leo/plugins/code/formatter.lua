@@ -7,28 +7,32 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				javascript = { "biome" },
-				solidity = { "forge_fmt" },
 				typescript = { "biome" },
 				javascriptreact = { "biome" },
 				typescriptreact = { "biome" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
+				svelte = { "prettierd" },
+				css = { "prettierd" },
+				html = { "prettierd" },
+				json = { "prettierd" },
+				jsonc = { "prettierd" },
+				yaml = { "prettierd" },
 				lua = { "stylua" },
 				python = { "ruff" },
+				solidity = { "forge_fmt" },
 			},
 			formatters = {
-				forge_fmt = {
-					command = vim.fn.exepath("forge") ~= "" and vim.fn.exepath("forge") or "forge",
-					args = { "fmt" },
-					stdin = false,
-					cwd = require("conform.util").root_file({ "foundry.toml" }),
+				prettierd = {
+					cwd = require("conform.util").root_file({
+						".prettierrc",
+						".prettierrc.json",
+						".prettier.config.js",
+						".git",
+					}),
 					require_cwd = true,
 				},
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_fallback = false, -- prevents jsonls from taking over
 				async = false,
 				timeout_ms = 1000,
 			},
