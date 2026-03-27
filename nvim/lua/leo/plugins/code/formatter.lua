@@ -13,7 +13,7 @@ return {
 				svelte = { "prettierd" },
 				css = { "prettierd" },
 				html = { "prettierd" },
-				json = { "prettierd" },
+				json = { "prettierd", "biome" },
 				jsonc = { "prettierd" },
 				yaml = { "prettierd" },
 				lua = { "stylua" },

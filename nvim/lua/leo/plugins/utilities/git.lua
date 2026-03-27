@@ -13,7 +13,6 @@ return {
 			},
 			keymaps = {
 				view = {
-					toggle_explorer = "<leader>e", -- Toggle explorer visibility (explorer mode only)
 					next_hunk = "]h", -- Jump to next change
 					prev_hunk = "[h", -- Jump to previous change
 				},
