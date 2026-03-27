@@ -32,7 +32,7 @@ return {
 				},
 			},
 			format_on_save = {
-				lsp_fallback = false, -- prevents jsonls from taking over
+				lsp_fallback = true,
 				async = false,
 				timeout_ms = 1000,
 			},
