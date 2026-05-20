@@ -6,19 +6,20 @@ return {
 		local conform = require("conform")
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "biome" },
-				typescript = { "biome" },
+				javascript = { "prettierd", "biome", stop_after_first = true },
+				typescript = { "prettierd", "biome", stop_after_first = true },
 				javascriptreact = { "biome" },
 				typescriptreact = { "biome" },
 				svelte = { "prettierd" },
 				css = { "prettierd" },
 				html = { "prettierd" },
-				json = { "prettierd", "biome" },
+				json = { "prettierd", "biome", stop_after_first = true },
 				jsonc = { "prettierd" },
 				yaml = { "prettierd" },
 				lua = { "stylua" },
 				python = { "ruff" },
 				solidity = { "forge_fmt" },
+				astro = { "prettierd" },
 			},
 			formatters = {
 				prettierd = {
