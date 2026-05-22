@@ -1,4 +1,7 @@
-local dotfiles_dir = vim.fn.expand(vim.env.DOTFILES_DIR or "~/dotfiles")
+local nvim_config_dir = vim.fn.stdpath("config")
+local nvim_config_realpath = (vim.uv or vim.loop).fs_realpath(nvim_config_dir) or nvim_config_dir
+local dotfiles_dir = vim.fn.expand(vim.env.DOTFILES_DIR or vim.fn.fnamemodify(nvim_config_realpath, ":h:h:h"))
+local dashboard_image = vim.fn.shellescape(("%s/assets/crop.png"):format(nvim_config_dir))
 
 local function edit_dotfile(name, file)
 	local config_dir = ("%s/%s/.config/%s"):format(dotfiles_dir, name, name)
@@ -64,7 +67,7 @@ return {
 			sections = {
 				{
 					section = "terminal",
-					cmd = "chafa ~/.config/nvim/assets/crop.png --symbols vhalf --color-extractor median --size 40x40 --scale 1",
+					cmd = ("chafa %s --symbols vhalf --color-extractor median --size 40x40 --scale 1"):format(dashboard_image),
 					height = 20,
 					padding = 1,
 				},
