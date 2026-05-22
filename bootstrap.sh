@@ -46,6 +46,19 @@ install_mise_toolchains() {
 		go@latest
 }
 
+install_foundry() {
+	log "Installing Foundry"
+
+	local foundry_dir="${FOUNDRY_DIR:-${XDG_CONFIG_HOME:-$HOME}/.foundry}"
+	local foundry_bin_dir="$foundry_dir/bin"
+
+	if [[ ! -x "$foundry_bin_dir/foundryup" ]]; then
+		curl -fsSL https://foundry.paradigm.xyz | bash
+	fi
+
+	foundryup
+}
+
 stow_dotfiles() {
 	log "Stowing dotfiles"
 	stow -t ~ */
@@ -67,6 +80,7 @@ main() {
 	load_homebrew
 	install_brew_bundle
 	install_mise_toolchains
+	install_foundry
 	stow_dotfiles
 	install_tmux_plugins
 
