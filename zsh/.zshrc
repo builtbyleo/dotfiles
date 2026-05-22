@@ -6,6 +6,8 @@ export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 export SCRIPTS="$HOME/scripts"
 
+export PATH="$PATH:/Users/leo/.foundry/bin"
+
 # ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
 
 path=(
@@ -36,7 +38,6 @@ alias o="opencode"
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
-
 
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
