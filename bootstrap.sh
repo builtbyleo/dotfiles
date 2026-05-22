@@ -49,7 +49,7 @@ install_mise_toolchains() {
 install_foundry() {
 	log "Installing Foundry"
 
-	local foundry_dir="${FOUNDRY_DIR:-${XDG_CONFIG_HOME:-$HOME}/.foundry}"
+    local foundry_dir="${FOUNDRY_DIR:-$HOME/.foundry}"
 	local foundry_bin_dir="$foundry_dir/bin"
 
 	if [[ ! -x "$foundry_bin_dir/foundryup" ]]; then
@@ -72,6 +72,8 @@ install_tmux_plugins() {
 	fi
 
 	"$TPM_DIR/bin/install_plugins"
+
+	tmux source-file "$DOTFILES_DIR/tmux/.config/tmux/tmux.conf"
 }
 
 main() {
