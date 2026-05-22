@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = main
+[user]
+	name = builtbyleo
+	email = leonardpaturel@proton.me
+	signingkey = /Users/leo/.ssh/id_ed25519.pub
+[commit]
+	gpgsign = true
+    gpg-sign = true
+[gpg]
+	format = ssh

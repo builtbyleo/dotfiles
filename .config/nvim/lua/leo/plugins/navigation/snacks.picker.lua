@@ -13,6 +13,7 @@ return {
 	       --stylua: ignore
 		keys = {
 			{ "<leader>ff", function() require("fff").find_files() end, desc = "Open file picker" },
+			{ "<leader>fs", function() require('fff').live_grep() end, desc = "LiFFFe grep" },
 		},
 	},
 	{
@@ -76,7 +77,6 @@ return {
             { "<leader>ee", function() Snacks.explorer() end,                    desc = "File Explorer", },
             { "<leader>fb", function() Snacks.picker.buffers() end,              desc = "Buffers" },
             { "<leader>ft", function() Snacks.picker.todo_comments() end,        desc = "Todo" },
-            { "<leader>fs", function() Snacks.picker.grep() end,                 desc = "Grep" },
             { "<leader>fD", function() Snacks.picker.diagnostics() end,          desc = "Diagnostics" },
             { "<leader>fd", function() Snacks.picker.diagnostics_buffer() end,   desc = "Buffer Diagnostics" },
             { "gd",         function() Snacks.picker.lsp_definitions() end,      desc = "Goto Definition" },

@@ -12,3 +12,5 @@ zed
 opencode
 /zed
 /spacetime
+/.config/hunk
+/.config/tmux/plugins

@@ -6,16 +6,20 @@ return {
 		dashboard = {
 			preset = {
 				keys = {
-					{ key = "c", icon = "   Nvim Config", action = "<cmd>:cd ~/.config/nvim | :edit init.lua <CR>" },
+					{
+						key = "c",
+						icon = "   Nvim Config",
+						action = "<cmd>:cd ~/dotfiles/.config/nvim | :edit init.lua <CR>",
+					},
 					{
 						key = "g",
 						icon = "   Ghostty Config",
-						action = "<cmd>:cd ~/.config/ghostty | :edit config <CR>",
+						action = "<cmd>:cd ~/dotfiles/.config/ghostty | :edit config <CR>",
 					},
 					{
 						key = "t",
 						icon = "   Tmux Config",
-						action = "<cmd>:cd ~/.config/tmux | :edit tmux.conf <CR>",
+						action = "<cmd>:cd ~/dotfiles/.config/tmux | :edit tmux.conf <CR>",
 					},
 					{ key = "u", icon = "󰂖   Update plugins", action = "<cmd>lua require('lazy').sync()<CR>" },
 					{ key = "q", icon = "   Quit NVIM", action = "<cmd>:qa<CR>" },
