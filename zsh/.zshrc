@@ -1,41 +1,67 @@
-# aliases
+# ~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~
+
+export EDITOR=nvim
+export VISUAL=nvim
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+
+export SCRIPTS="$HOME/scripts"
+
+# ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
+
+path=(
+  $path
+  $HOME/bin
+  $HOME/.local/bin
+  $SCRIPTS
+)
+
+# Remove duplicates + non-existent dirs
+typeset -U path
+path=($^path(N-/))
+
+export PATH
+
+# ~~~~~~~~~~~ Aliases ~~~~~~~~~~~
+
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --group-directories-first"
+alias s="source ~/dotfiles/zsh/.zshrc"
 alias cd="z"
 alias c="clear"
 alias v="nvim"
+alias t="tmux"
 alias o="opencode"
 
-export EDITOR=nvim
-
-export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+# ~~~~~~~~~~~ Command Line Editing ~~~~~~~~~~~
 
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-## cycle through autocomplete menu
-autoload -Uz compinit && compinit -C
 
-# QoL plugins
+# ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
-## autosuggestions
+# cycle through autocomplete menu
+autoload -Uz compinit 
+compinit -C
+
+# ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
+
+# autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-## vim mode
+# vim mode
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-## colour syntax highlights
+# colour syntax highlights
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 # mise
 eval "$(/opt/homebrew/bin/mise activate zsh)"
-
-export PATH="$HOME/.local/bin:$PATH"
 
 # atuin
 eval "$(atuin init zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
-
 
 # starship
 eval "$(starship init zsh)"
