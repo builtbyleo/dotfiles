@@ -29,6 +29,7 @@ return {
 			picker = {
 				sources = {
 					explorer = {
+						include = { ".config", ".github" },
 						layout = {
 							layout = {
 								width = 32,
