@@ -1,17 +1,3 @@
-local nvim_config_dir = vim.fn.stdpath("config")
-local nvim_config_realpath = (vim.uv or vim.loop).fs_realpath(nvim_config_dir) or nvim_config_dir
-local dotfiles_dir = vim.fn.expand(vim.env.DOTFILES_DIR or vim.fn.fnamemodify(nvim_config_realpath, ":h:h:h"))
-local dashboard_image = vim.fn.shellescape(("%s/assets/crop.png"):format(nvim_config_dir))
-
-local function edit_dotfile(name, file)
-	local config_dir = ("%s/%s/.config/%s"):format(dotfiles_dir, name, name)
-
-	return ("<cmd>cd %s | edit %s<CR>"):format(
-		vim.fn.fnameescape(config_dir),
-		vim.fn.fnameescape(file)
-	)
-end
-
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -23,18 +9,24 @@ return {
 					{
 						key = "c",
 						icon = "   Nvim Config",
-						action = edit_dotfile("nvim", "init.lua"),
+						action = "<cmd>edit ~/dotfiles/nvim/.config/nvim/init.lua<CR>",
 					},
 					{
 						key = "g",
 						icon = "   Ghostty Config",
-						action = edit_dotfile("ghostty", "config"),
+						action = "<cmd>edit ~/dotfiles/ghostty/.config/ghostty/config<CR>",
 					},
 					{
 						key = "t",
 						icon = "   Tmux Config",
-						action = edit_dotfile("tmux", "tmux.conf"),
+						action = "<cmd>edit ~/dotfiles/tmux/.config/tmux/tmux.conf<CR>",
 					},
+					{
+						key = "z",
+						icon = "    zshrc",
+						action = "<cmd>edit ~/dotfiles/zsh/.zshrc<CR>",
+					},
+
 					{ key = "u", icon = "󰂖   Update plugins", action = "<cmd>lua require('lazy').sync()<CR>" },
 					{ key = "q", icon = "   Quit NVIM", action = "<cmd>:qa<CR>" },
 				},
@@ -65,9 +57,10 @@ return {
 				--     ]],
 			},
 			sections = {
+
 				{
 					section = "terminal",
-					cmd = ("chafa %s --symbols vhalf --color-extractor median --size 40x40 --scale 1"):format(dashboard_image),
+					cmd = "chafa ~/dotfiles/nvim/.config/nvim/assets/crop.png --symbols vhalf --color-extractor median --size 40x40 --scale 1",
 					height = 20,
 					padding = 1,
 				},
