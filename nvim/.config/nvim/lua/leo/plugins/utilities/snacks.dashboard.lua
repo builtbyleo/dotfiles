@@ -1,3 +1,14 @@
+local dotfiles_dir = vim.fn.expand(vim.env.DOTFILES_DIR or "~/dotfiles")
+
+local function edit_dotfile(name, file)
+	local config_dir = ("%s/%s/.config/%s"):format(dotfiles_dir, name, name)
+
+	return ("<cmd>cd %s | edit %s<CR>"):format(
+		vim.fn.fnameescape(config_dir),
+		vim.fn.fnameescape(file)
+	)
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -9,17 +20,17 @@ return {
 					{
 						key = "c",
 						icon = "   Nvim Config",
-						action = "<cmd>:cd ~/dotfiles/.config/nvim | :edit init.lua <CR>",
+						action = edit_dotfile("nvim", "init.lua"),
 					},
 					{
 						key = "g",
 						icon = "   Ghostty Config",
-						action = "<cmd>:cd ~/dotfiles/.config/ghostty | :edit config <CR>",
+						action = edit_dotfile("ghostty", "config"),
 					},
 					{
 						key = "t",
 						icon = "   Tmux Config",
-						action = "<cmd>:cd ~/dotfiles/.config/tmux | :edit tmux.conf <CR>",
+						action = edit_dotfile("tmux", "tmux.conf"),
 					},
 					{ key = "u", icon = "󰂖   Update plugins", action = "<cmd>lua require('lazy').sync()<CR>" },
 					{ key = "q", icon = "   Quit NVIM", action = "<cmd>:qa<CR>" },

@@ -1,16 +1,2 @@
-gh/
-raycast/
-tmux/plugins/
-yarn/
-mise/
 .DS_Store
-github-copilot
-configstore/
-uv
-wireshark
-zed
-opencode
-/zed
-/spacetime
-/.config/hunk
-/.config/tmux/plugins
+
