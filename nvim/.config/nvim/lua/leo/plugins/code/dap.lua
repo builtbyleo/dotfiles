@@ -3,7 +3,6 @@ return {
 	lazy = true,
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
-		"leoluz/nvim-dap-go",
 		"nvim-neotest/nvim-nio",
 	},
     -- stylua: ignore
@@ -22,7 +21,6 @@ return {
     },
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
-		require("dap-go").setup()
 		require("dapui").setup()
 
 		dap.listeners.before.attach.dapui_config = function()
