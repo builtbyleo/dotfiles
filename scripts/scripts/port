@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+command -v fzf >/dev/null || {
+  echo "fzf required: brew install fzf"
+  exit 1
+}
+
+command -v tmux >/dev/null || {
+  echo "tmux required: brew install tmux"
+  exit 1
+}
+
+rows="$(
+  lsof -nP -iTCP -sTCP:LISTEN 2>/dev/null |
+  awk 'NR>1 {
+    port=$9
+    sub(/.*:/,"",port)
+
+    cmd=$1
+    pid=$2
+    user=$3
+
+    print port "\t" cmd "\t" pid "\t" user
+  }' |
+  sort -n -k1,1 |
+  while IFS=$'\t' read -r port cmd pid user; do
+    fullcmd="$(ps -p "$pid" -o command= 2>/dev/null || true)"
+
+    printf "%-7s %-18s %-8s %-10s %s\n" \
+      "$port" "$cmd" "$pid" "$user" "$fullcmd"
+  done
+)"
+
+[ -n "$rows" ] || {
+  echo "No listening ports."
+  exit 0
+}
+
+selected="$(
+  printf "%s\n" "$rows" |
+    fzf-tmux -p 75%,75% \
+    --multi \
+    --layout=reverse \
+    --header='TAB select • ENTER kill' \
+    --prompt='port > ' \
+    --preview='
+      pid=$(echo {} | awk "{print \$3}")
+      echo ""
+      ps -p "$pid" -o pid,ppid,user,%cpu,%mem,start,command
+      echo ""
+      lsof -Pan -p "$pid" -i
+    ' \
+    --preview-window=down:70%:wrap
+)"
+
+[ -z "$selected" ] && exit 0
+
+echo "$selected" | while read -r line; do
+  pid="$(awk '{print $3}' <<< "$line")"
+  port="$(awk '{print $1}' <<< "$line")"
+  cmd="$(awk '{print $2}' <<< "$line")"
+
+  echo "Killing $cmd (PID $pid) on port $port"
+
+  kill "$pid" 2>/dev/null || sudo kill -9 "$pid"
+done
