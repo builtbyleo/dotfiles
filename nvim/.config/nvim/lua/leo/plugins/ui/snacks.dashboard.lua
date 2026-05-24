@@ -1,3 +1,7 @@
+local function edit_config(path)
+	return "<cmd>cd " .. vim.fn.fnamemodify(path, ":h") .. " | edit " .. path .. "<CR>"
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -9,22 +13,22 @@ return {
 					{
 						key = "c",
 						icon = "   Nvim Config",
-						action = "<cmd>edit ~/dotfiles/nvim/.config/nvim/init.lua<CR>",
+						action = edit_config("~/dotfiles/nvim/.config/nvim/init.lua"),
 					},
 					{
 						key = "g",
 						icon = "   Ghostty Config",
-						action = "<cmd>edit ~/dotfiles/ghostty/.config/ghostty/config<CR>",
+						action = edit_config("~/dotfiles/ghostty/.config/ghostty/config"),
 					},
 					{
 						key = "t",
 						icon = "   Tmux Config",
-						action = "<cmd>edit ~/dotfiles/tmux/.config/tmux/tmux.conf<CR>",
+						action = edit_config("~/dotfiles/tmux/.config/tmux/tmux.conf"),
 					},
 					{
 						key = "z",
 						icon = "    zshrc",
-						action = "<cmd>edit ~/dotfiles/zsh/.zshrc<CR>",
+						action = edit_config("~/dotfiles/zsh/.zshrc"),
 					},
 
 					{ key = "u", icon = "󰂖   Update plugins", action = "<cmd>lua require('lazy').sync()<CR>" },
