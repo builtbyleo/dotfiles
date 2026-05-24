@@ -1,8 +1,7 @@
-Personal config files, no guarantees this will work on your machine (or even mine)
 
 # Dotfiles
 
-My personal dotfiles, managed with GNU Stow
+Personal config files, no guarantees this will work on your machine (or even mine). Managed with GNU stow <3 
 
 ## Fresh Install
 
