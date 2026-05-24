@@ -30,13 +30,11 @@ return {
 						icon = "   Zshrc",
 						action = edit_config("~/dotfiles/zsh/.zshrc"),
 					},
-
 					{ key = "u", icon = "󰂖   Update plugins", action = "<cmd>lua require('lazy').sync()<CR>" },
 					{ key = "q", icon = "   Quit NVIM", action = "<cmd>:qa<CR>" },
 				},
 			},
 			sections = {
-
 				{
 					section = "terminal",
 					cmd = "chafa ~/dotfiles/nvim/.config/nvim/assets/crop.png --symbols vhalf --color-extractor median --size 40x40 --scale 1",
