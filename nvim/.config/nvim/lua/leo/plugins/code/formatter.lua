@@ -20,6 +20,7 @@ return {
 				python = { "ruff" },
 				solidity = { "forge_fmt" },
 				astro = { "prettierd" },
+				sh = { "shfmt" },
 			},
 			formatters = {
 				prettierd = {

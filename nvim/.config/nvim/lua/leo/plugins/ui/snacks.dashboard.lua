@@ -27,7 +27,7 @@ return {
 					},
 					{
 						key = "z",
-						icon = "    zshrc",
+						icon = "   Zshrc",
 						action = edit_config("~/dotfiles/zsh/.zshrc"),
 					},
 

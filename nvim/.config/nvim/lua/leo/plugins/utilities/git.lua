@@ -6,8 +6,8 @@ return {
 		cmd = "CodeDiff",
 		opts = {
 			highlights = {
-				line_insert = "#20281C",
-				line_delete = "#281C22",
+				-- line_insert = "#20281C",
+				-- line_delete = "#281C22",
 				-- char_insert = "#3fb950",
 				-- char_delete = "#ff7b72",
 			},
@@ -29,7 +29,7 @@ return {
 		opts = {
 			view = {
 				style = "sign",
-				signs = { add = "▎", change = "▎", delete = "" },
+				signs = { add = "▎", change = "▎", delete = "▎" },
 			},
 			options = {
 				wrap_goto = true,
