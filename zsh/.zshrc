@@ -6,12 +6,16 @@ export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 export SCRIPTS="$HOME/scripts"
 
-export PATH="$PATH:/Users/leo/.foundry/bin"
+export FOUNDRY="$HOME/.foundry/bin"
+
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
 
 path=(
   $path
+  $FOUNDRY
+  $XDG_CACHE_HOME
   $HOME/bin
   $HOME/.local/bin
   $SCRIPTS
@@ -41,9 +45,18 @@ bindkey "^X^E" edit-command-line
 
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
-# cycle through autocomplete menu
-autoload -Uz compinit 
-compinit -C
+# Load completion system
+autoload -Uz compinit
+
+# Initialize completion with cached metadata file
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+
+# Enable interactive completion menu selection
+zstyle ':completion:*' menu select
+
+# Make completion case-insensitive
+# Example: "doc" can complete to "Documents"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
 # ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
 
