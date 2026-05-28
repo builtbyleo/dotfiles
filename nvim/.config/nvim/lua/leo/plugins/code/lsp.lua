@@ -16,6 +16,8 @@ return {
 		opts = {
 			ensure_installed = {
 				"lua_ls",
+				"ruff",
+				"pyright",
 				"vtsls",
 				-- "emmet_language_server",
 				"gopls",
