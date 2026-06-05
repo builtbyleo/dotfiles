@@ -6,24 +6,25 @@ return {
 		local conform = require("conform")
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettierd", "biome", stop_after_first = true },
-				typescript = { "prettierd", "biome", stop_after_first = true },
+				javascript = { "prettier", "biome", stop_after_first = true },
+				typescript = { "prettier", "biome", stop_after_first = true },
 				javascriptreact = { "biome" },
 				typescriptreact = { "biome" },
-				svelte = { "prettierd" },
-				css = { "prettierd" },
-				html = { "prettierd" },
-				json = { "prettierd", "biome", stop_after_first = true },
-				jsonc = { "prettierd" },
-				yaml = { "prettierd" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
+				json = { "prettier", "biome", stop_after_first = true },
+				jsonc = { "prettier" },
+				yaml = { "prettier" },
 				lua = { "stylua" },
 				python = { "ruff" },
 				solidity = { "forge_fmt" },
-				astro = { "prettierd" },
-				sh = { "shfmt" },
+				astro = { "prettier" },
+				sh = { "beautysh" },
+				zsh = { "beautysh" },
 			},
 			formatters = {
-				prettierd = {
+				prettier = {
 					cwd = require("conform.util").root_file({
 						".prettierrc",
 						".prettierrc.json",
