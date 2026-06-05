@@ -5,20 +5,19 @@ export VISUAL=nvim
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 export SCRIPTS="$HOME/scripts"
-
 export FOUNDRY="$HOME/.foundry/bin"
-
 export XDG_CACHE_HOME="$HOME/.cache"
+export HOMEBREW_PREFIX="/opt/homebrew"
 
 # ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
 
 path=(
-  $path
-  $FOUNDRY
-  $XDG_CACHE_HOME
-  $HOME/bin
-  $HOME/.local/bin
-  $SCRIPTS
+    $path
+    $FOUNDRY
+    $XDG_CACHE_HOME
+    $HOME/bin
+    $HOME/.local/bin
+    $SCRIPTS
 )
 
 # Remove duplicates + non-existent dirs
@@ -29,9 +28,8 @@ export PATH
 
 # ~~~~~~~~~~~ Aliases ~~~~~~~~~~~
 
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --group-directories-first"
+alias ls="eza --color=always --long --git --no-filesize --all --icons=always --no-time --no-user --no-permissions --group-directories-first"
 alias s="source ~/dotfiles/zsh/.zshrc"
-alias cd="z"
 alias c="clear"
 alias v="nvim"
 alias t="tmux"
@@ -45,11 +43,11 @@ bindkey "^X^E" edit-command-line
 
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
-# Load completion system
-autoload -Uz compinit
-
-# Initialize completion with cached metadata file
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+# zsh-completions plugin
+fpath=(
+    $HOMEBREW_PREFIX/share/zsh-completions
+    $fpath
+)
 
 # Enable interactive completion menu selection
 zstyle ':completion:*' menu select
@@ -58,24 +56,46 @@ zstyle ':completion:*' menu select
 # Example: "doc" can complete to "Documents"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
+# Load completion system
+autoload -Uz compinit
+
+
+# only refresh dump after 24hrs
+zcompdump="$XDG_CACHE_HOME/zsh/zcompdump"
+mkdir -p "${zcompdump:h}"
+
+if [[ "$zcompdump" -nt "$HOME/.zshrc" ]]; then
+    compinit -C -d "$zcompdump"
+else
+    compinit -d "$zcompdump"
+fi
+
 # ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
 
 # autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# vim mode
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # colour syntax highlights
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+eval "$(fzf --zsh)"
+
+# fzf completions
+source ~/fzf-tab/fzf-tab.plugin.zsh
 
 # mise
-eval "$(/opt/homebrew/bin/mise activate zsh)"
+eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
 
 # atuin
-eval "$(atuin init zsh)"
+zvm_after_init_commands+=(
+    'eval "$(atuin init zsh)"'
+)
+
+# vim mode
+source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # starship
 eval "$(starship init zsh)"
+
