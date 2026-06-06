@@ -4,10 +4,10 @@ autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=10
 
 # Prompt symbol (❯)
-zstyle ':prompt:pure:prompt:*' color '#FE6BC1'
+zstyle ':prompt:pure:prompt:*' color magenta
 
 # Current path
-zstyle :prompt:pure:path color '#57C7FF'
+zstyle :prompt:pure:path color blue
 
 # Git branch name
 zstyle :prompt:pure:git:branch color red
