@@ -11,6 +11,7 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 
 # ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
 
+# executables
 path=(
     $path
     $FOUNDRY
@@ -25,6 +26,13 @@ typeset -U path
 path=($^path(N-/))
 
 export PATH
+
+# needed for completions + pure prompt
+fpath=(
+    $HOMEBREW_PREFIX/share/zsh/site-functions
+    $HOMEBREW_PREFIX/share/zsh-completions
+    $fpath
+)
 
 # ~~~~~~~~~~~ Aliases ~~~~~~~~~~~
 
@@ -43,14 +51,8 @@ bindkey "^X^E" edit-command-line
 
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
-# zsh-completions plugin
-fpath=(
-    $HOMEBREW_PREFIX/share/zsh-completions
-    $fpath
-)
-
 # Enable interactive completion menu selection
-zstyle ':completion:*' menu select
+# zstyle ':completion:*' menu select
 
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
@@ -96,6 +98,4 @@ source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # zoxide
 eval "$(zoxide init zsh --cmd cd)"
 
-# starship
-eval "$(starship init zsh)"
-
+source ~/dotfiles/zsh/zsh/prompt.zsh
