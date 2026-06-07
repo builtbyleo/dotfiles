@@ -1,5 +1,4 @@
 # ~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~
-
 export EDITOR=nvim
 export VISUAL=nvim
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
@@ -74,18 +73,14 @@ fi
 
 # ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
 
-# autosuggestions
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# colour syntax highlights
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+# fzf
 eval "$(fzf --zsh)"
 
 # fzf completions
 source ~/fzf-tab/fzf-tab.plugin.zsh
 
-# mise
-eval "$($HOMEBREW_PREFIX/bin/mise activate zsh)"
+# mise (maybe remove shims if causing issues)
+eval "$($HOMEBREW_PREFIX/bin/mise activate zsh --shims)"
 
 # atuin
 zvm_after_init_commands+=(
@@ -98,4 +93,11 @@ source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 # zoxide
 eval "$(zoxide init zsh --cmd cd)"
 
+# pure prompt
 source ~/dotfiles/zsh/zsh/prompt.zsh
+
+# autosuggestions
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# colour syntax highlights
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
