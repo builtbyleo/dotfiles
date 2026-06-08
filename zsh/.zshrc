@@ -56,25 +56,21 @@ bindkey "^X^E" edit-command-line
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
-
-# Load completion system
-autoload -Uz compinit
-
+zstyle ':completion:*' menu no
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # only refresh dump after 24hrs
-zcompdump="$XDG_CACHE_HOME/zsh/zcompdump"
-mkdir -p "${zcompdump:h}"
-
-if [[ "$zcompdump" -nt "$HOME/.zshrc" ]]; then
-    compinit -C -d "$zcompdump"
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+    compinit -C
 else
-    compinit -d "$zcompdump"
+    compinit
 fi
 
 # ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
 
 # fzf
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 # fzf completions
 source ~/fzf-tab/fzf-tab.plugin.zsh
