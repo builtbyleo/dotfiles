@@ -3,6 +3,8 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 TPM_DIR="$HOME/.tmux/plugins/tpm"
+FZF_TAB_DIR="$HOME/fzf-tab"
+FAST_SYNTAX_HIGHLIGHTING_DIR="$HOME/fast-syntax-highlighting"
 
 log() {
 	printf '\n==> %s\n' "$*"
@@ -64,6 +66,18 @@ stow_dotfiles() {
 	stow -t ~ */
 }
 
+setup_plugins() {
+	log "Installing zsh plugins"
+
+	if [[ ! -d "$FZF_TAB_DIR/.git" ]]; then
+		git clone https://github.com/Aloxaf/fzf-tab "$FZF_TAB_DIR"
+	fi
+
+	if [[ ! -d "$FAST_SYNTAX_HIGHLIGHTING_DIR/.git" ]]; then
+		git clone https://github.com/zdharma-continuum/fast-syntax-highlighting "$FAST_SYNTAX_HIGHLIGHTING_DIR"
+	fi
+}
+
 install_tmux_plugins() {
 	log "Installing tmux plugins"
 
@@ -84,6 +98,7 @@ main() {
 	install_mise_toolchains
 	install_foundry
 	stow_dotfiles
+	setup_plugins
 	install_tmux_plugins
 
 	log "Bootstrap complete"
