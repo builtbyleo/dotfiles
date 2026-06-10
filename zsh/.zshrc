@@ -96,4 +96,4 @@ source ~/dotfiles/zsh/zsh/prompt.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # colour syntax highlights
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
