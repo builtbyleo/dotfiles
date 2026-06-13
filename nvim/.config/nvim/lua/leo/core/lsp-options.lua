@@ -23,21 +23,15 @@ keymap.set("n", "Q", function()
 	vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = "open floating diagnostics" })
 
-keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "See available code actions" })
-
 keymap.set("n", "gK", function()
 	return vim.lsp.buf.signature_help()
 end, { desc = "Signature Help" })
-
-keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Smart rename" })
 
 keymap.set("n", "K", function()
 	vim.lsp.buf.hover({
 		border = "rounded",
 	})
 end, { desc = "Show documentation for what is under cursor" })
-
-keymap.set("n", "<leader>rs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
 vim.g["diagnostics_active"] = true
 function Toggle_diagnostics()
