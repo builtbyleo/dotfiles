@@ -1,17 +1,18 @@
 return {
-
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		version = "1.*",
-		event = "InsertEnter",
+		dependencies = { "saghen/blink.lib", "rafamadriz/friendly-snippets" },
+		event = { "InsertEnter" },
+		build = function()
+			require("blink.cmp").build():pwait()
+		end,
 		opts = {
 			keymap = {
 				preset = "none",
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-k>"] = { "select_prev", "fallback" },
 				["<C-j>"] = { "select_next", "fallback" },
-				["<CR>"] = { "accept", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 				["<C-e>"] = { "hide", "fallback" },
@@ -19,10 +20,15 @@ return {
 			cmdline = {
 				keymap = {
 					["<Tab>"] = { "show", "select_next", "fallback" },
-					["<CR>"] = { "accept", "fallback" },
+					["<CR>"] = { "accept_and_enter", "fallback" },
 					["<C-k>"] = { "select_prev", "fallback" },
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-e>"] = { "hide", "fallback" },
+				},
+				completion = {
+					menu = {
+						auto_show = false,
+					},
 				},
 			},
 			appearance = {
