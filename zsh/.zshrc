@@ -96,4 +96,4 @@ source ~/dotfiles/zsh/zsh/prompt.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # colour syntax highlights
-source ~/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+eval "$(/opt/homebrew/bin/zsh-patina activate)"
