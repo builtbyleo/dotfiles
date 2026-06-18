@@ -42,12 +42,6 @@ alias v="nvim"
 alias t="tmux"
 alias o="opencode"
 
-# ~~~~~~~~~~~ Command Line Editing ~~~~~~~~~~~
-
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
-
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
 # Enable interactive completion menu selection
