@@ -20,7 +20,7 @@ return {
 			cmdline = {
 				keymap = {
 					["<Tab>"] = { "show", "select_next", "fallback" },
-					["<CR>"] = { "accept_and_enter", "fallback" },
+					["<CR>"] = { "accept", "fallback" },
 					["<C-k>"] = { "select_prev", "fallback" },
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-e>"] = { "hide", "fallback" },
