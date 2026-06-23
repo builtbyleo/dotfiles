@@ -34,11 +34,25 @@ return {
 					require_cwd = true,
 				},
 			},
-			format_on_save = {
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			},
+			format_on_save = function()
+				if vim.g.autoformat == false then
+					return
+				end
+				return {
+					timeout_ms = 1000,
+					lsp_fallback = true,
+				}
+			end,
 		})
 	end,
+	keys = {
+		{
+			"<leader>uf",
+			function()
+				vim.g.autoformat = not (vim.g.autoformat ~= false)
+				vim.notify("Format on save " .. (vim.g.autoformat and "enabled" or "disabled"))
+			end,
+			desc = "Toggle Format on Save",
+		},
+	},
 }
