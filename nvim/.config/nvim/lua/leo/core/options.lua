@@ -36,3 +36,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 vim.opt.fillchars:append({ eob = " " })
+
+-- sometimes tmux file is seen as bash
+vim.filetype.add({
+	filename = {
+		["tmux.conf"] = "tmux",
+	},
+})
