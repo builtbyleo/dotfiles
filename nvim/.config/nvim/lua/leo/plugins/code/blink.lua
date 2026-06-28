@@ -25,11 +25,6 @@ return {
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-e>"] = { "hide", "fallback" },
 				},
-				completion = {
-					menu = {
-						auto_show = false,
-					},
-				},
 			},
 			appearance = {
 				use_nvim_cmp_as_default = true,
@@ -39,6 +34,9 @@ return {
 				documentation = { window = { border = "rounded" } },
 				menu = {
 					auto_show = function(ctx)
+						if ctx.mode == "cmdline" then
+							return false
+						end
 						local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 						local success, node = pcall(vim.treesitter.get_node, {
 							pos = { row - 1, math.max(0, col - 1) },
