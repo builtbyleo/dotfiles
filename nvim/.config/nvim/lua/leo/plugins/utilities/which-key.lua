@@ -1,8 +1,8 @@
 return {
-	"folke/which-key.nvim",
-	event = "VeryLazy",
-	opts = {
-		preset = "helix",
-		win = { border = "single" },
-	},
+	-- "folke/which-key.nvim",
+	-- event = "VeryLazy",
+	-- opts = {
+	-- 	preset = "helix",
+	-- 	win = { border = "single" },
+	-- },
 }
