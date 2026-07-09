@@ -1,5 +1,5 @@
 {
-  "blink.cmp": { "branch": "main", "commit": "9dcb1f3a9164f10c8950a790aace576f2e89dc78" },
+  "blink.cmp": { "branch": "main", "commit": "72d81f789f1ae5f8765a87a5a5fc3562ad687df7" },
   "blink.indent": { "branch": "main", "commit": "8b69b9262891fe81fe728fe6a52fa2a84dd5d5e0" },
   "blink.lib": { "branch": "main", "commit": "5876dd95deeb70aadbe9f1c0b7117a135061cdac" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
@@ -9,7 +9,7 @@
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
   "crates.nvim": { "branch": "main", "commit": "694357861ec9ebf12475ddcdd04ea45a0923c32d" },
   "dropbar.nvim": { "branch": "master", "commit": "808ba31cde89aec8833e9789f5e04557cd31c9e1" },
-  "fff.nvim": { "branch": "main", "commit": "7221081183e7f036a7804767dadc34edc4485d99" },
+  "fff.nvim": { "branch": "main", "commit": "1a8ef35ad8eef54dc718b4846c470af6eed85950" },
   "fidget.nvim": { "branch": "main", "commit": "6f793b2bcd2d35e201c09520f698bb763220908a" },
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
