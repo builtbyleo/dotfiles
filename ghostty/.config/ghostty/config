@@ -3,7 +3,7 @@ cursor-color = "#FFFFFF"
 
 # Font
 font-family = "GeistMono NFM Medium"
-font-size = 12.5
+font-size = 13
 
 # background-opacity=0.9
 # background-blur=true
