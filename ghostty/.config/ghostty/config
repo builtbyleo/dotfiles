@@ -2,10 +2,12 @@ theme = Ayu
 cursor-color = "#FFFFFF"
 
 # Font
-font-family = "GeistMono NFM Medium"
-font-size = 13
+# font-family = "GeistMono NFM Medium"
+font-family = "JetBrainsMono NFM Medium"
+font-size = 14
+adjust-cell-height=10%
 
-# background-opacity=0.9
+# background-opacity=0.6
 # background-blur=true
 
 cursor-style = underline
