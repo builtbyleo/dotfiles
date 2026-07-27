@@ -17,6 +17,7 @@ return {
 			require("mini.cursorword").setup()
 			require("mini.icons").setup()
 			require("mini.icons").mock_nvim_web_devicons()
+			require("mini.statusline").setup()
 			local miniclue = require("mini.clue")
 			miniclue.setup({
 				triggers = {
@@ -62,7 +63,6 @@ return {
 					delay = 500,
 				},
 			})
-			-- require("mini.statusline").setup()
 			-- mini.ai with custom text objects
 			local ai = require("mini.ai")
 			ai.setup({
