@@ -28,7 +28,6 @@ return {
 				"jsonls",
 				"denols",
 			},
-			automatic_installation = true,
 		},
 	},
 	{ "dmmulroy/ts-error-translator.nvim", opts = {} },

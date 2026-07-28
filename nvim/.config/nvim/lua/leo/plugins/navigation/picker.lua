@@ -21,12 +21,12 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			previewers = {
-				diff = {
-					cmd = { "delta" },
-				},
-			},
 			picker = {
+				previewers = {
+					diff = {
+						cmd = { "delta" },
+					},
+				},
 				sources = {
 					explorer = {
 						include = { ".config", ".github", ".zshrc", ".gitignore", ".prettierrc", ".prettierignore" },

@@ -29,7 +29,6 @@ return {
 						".prettierrc",
 						".prettierrc.json",
 						".prettier.config.js",
-						".git",
 					}),
 					require_cwd = true,
 				},
@@ -40,7 +39,7 @@ return {
 				end
 				return {
 					timeout_ms = 1000,
-					lsp_fallback = true,
+					lsp_format = "fallback",
 				}
 			end,
 		})

@@ -6,12 +6,11 @@ return {
 		config = function()
 			vim.cmd.colorscheme("carvion")
 			vim.api.nvim_set_hl(0, "MiniNotifyNormal", { link = "Normal" })
-			vim.api.nvim_set_hl(0, "MiniNotifyBorder", { link = "Normal" })
 		end,
 	},
 	{
 		"Shatur/neovim-ayu",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			require("ayu").setup({
