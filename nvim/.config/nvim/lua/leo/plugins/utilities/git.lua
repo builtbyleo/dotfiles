@@ -24,15 +24,16 @@ return {
 	       },
 	},
 	{
-		"echasnovski/mini.diff",
-		event = { "BufReadPre", "BufNewFile" },
+		"nvim-mini/mini.nvim",
 		opts = {
-			view = {
-				style = "sign",
-				signs = { add = "▎", change = "▎", delete = "▎" },
-			},
-			options = {
-				wrap_goto = true,
+			diff = {
+				view = {
+					style = "sign",
+					signs = { add = "▎", change = "▎", delete = "▎" },
+				},
+				options = {
+					wrap_goto = true,
+				},
 			},
 		},
         --stylua: ignore

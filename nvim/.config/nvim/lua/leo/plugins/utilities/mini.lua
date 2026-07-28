@@ -8,7 +8,7 @@ return {
 		"nvim-mini/mini.nvim",
 		version = "*",
 		event = "VeryLazy",
-		config = function()
+		config = function(_, opts)
 			-- Each mini module as separate setup call
 			require("mini.surround").setup()
 			require("mini.pairs").setup()
@@ -18,6 +18,7 @@ return {
 			require("mini.icons").setup()
 			require("mini.icons").mock_nvim_web_devicons()
 			require("mini.git").setup()
+			require("mini.diff").setup(opts.diff)
 			require("mini.statusline").setup()
 			local miniclue = require("mini.clue")
 			miniclue.setup({
