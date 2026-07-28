@@ -17,6 +17,7 @@ return {
 			require("mini.cursorword").setup()
 			require("mini.icons").setup()
 			require("mini.icons").mock_nvim_web_devicons()
+			require("mini.git").setup()
 			require("mini.statusline").setup()
 			local miniclue = require("mini.clue")
 			miniclue.setup({
