@@ -1,5 +1,23 @@
 return {
 	{
+		"builtbyleo/carvion.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("carvion")
+			vim.api.nvim_set_hl(0, "MiniNotifyNormal", { link = "Normal" })
+			vim.api.nvim_set_hl(0, "MiniNotifyBorder", { link = "Normal" })
+		end,
+	},
+	{
+		"builtbyleo/oc-2.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			-- vim.cmd.colorscheme("oc-2-noir")
+		end,
+	},
+	{
 		"Shatur/neovim-ayu",
 		lazy = false,
 		priority = 1000,
@@ -29,7 +47,7 @@ return {
 				},
 			})
 
-			vim.cmd.colorscheme("ayu")
+			-- vim.cmd.colorscheme("ayu")
 		end,
 	},
 }
