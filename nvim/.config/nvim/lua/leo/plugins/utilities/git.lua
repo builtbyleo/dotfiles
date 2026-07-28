@@ -13,8 +13,8 @@ return {
 			},
 			keymaps = {
 				view = {
-					next_hunk = "]h", -- Jump to next change
-					prev_hunk = "[h", -- Jump to previous change
+					next_hunk = "]h",
+					prev_hunk = "[h",
 				},
 			},
 		},
