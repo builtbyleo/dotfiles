@@ -10,14 +10,6 @@ return {
 		end,
 	},
 	{
-		"builtbyleo/oc-2.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			-- vim.cmd.colorscheme("oc-2-noir")
-		end,
-	},
-	{
 		"Shatur/neovim-ayu",
 		lazy = false,
 		priority = 1000,
