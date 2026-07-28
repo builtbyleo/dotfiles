@@ -38,7 +38,7 @@ return {
         --stylua: ignore
 		keys = {
 			{ "<leader>gt", function() MiniDiff.toggle_overlay(0) end, desc = "Toggle diff overlay" },
-			{ "<leader>gr", function() return MiniDiff.operator("reset") .. "gh" end, desc = "Reset hunk under cursor" },
+			{ "<leader>gr", function() return MiniDiff.operator("reset") .. "gh" end, mode = "n", expr = true, remap = true, desc = "Reset hunk under cursor" },
 			{
 				"<leader>gr",
 				function()
