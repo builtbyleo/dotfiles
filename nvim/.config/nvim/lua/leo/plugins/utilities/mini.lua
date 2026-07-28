@@ -9,7 +9,6 @@ return {
 		version = "*",
 		event = "VeryLazy",
 		config = function(_, opts)
-			-- Each mini module as separate setup call
 			require("mini.surround").setup()
 			require("mini.pairs").setup()
 			require("mini.comment").setup()
