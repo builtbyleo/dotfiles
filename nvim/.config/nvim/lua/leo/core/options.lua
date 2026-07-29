@@ -43,3 +43,31 @@ vim.filetype.add({
 		["tmux.conf"] = "tmux",
 	},
 })
+
+-- simpler tabline
+function _G.simple_tabline()
+	local result = {}
+
+	for tab = 1, vim.fn.tabpagenr("$") do
+		local selected = tab == vim.fn.tabpagenr()
+		local window = vim.fn.tabpagewinnr(tab)
+		local buffer = vim.fn.tabpagebuflist(tab)[window]
+		local name = vim.fn.bufname(buffer)
+
+		local name = vim.fn.bufname(buffer)
+
+		if name == "" then
+			name = "[Scratch]"
+		else
+			name = vim.fn.fnamemodify(name, ":.")
+		end
+
+		table.insert(result, selected and "%#TabLineSel#" or "%#TabLine#")
+		table.insert(result, "%" .. tab .. "T  " .. name .. "  ")
+	end
+
+	table.insert(result, "%#TabLineFill#%T")
+	return table.concat(result)
+end
+
+vim.opt.tabline = "%!v:lua.simple_tabline()"
