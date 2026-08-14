@@ -28,6 +28,7 @@ export PATH
 
 # needed for completions + pure prompt
 fpath=(
+    $HOME/.zsh/completions
     $HOMEBREW_PREFIX/share/zsh/site-functions
     $HOMEBREW_PREFIX/share/zsh-completions
     $fpath
