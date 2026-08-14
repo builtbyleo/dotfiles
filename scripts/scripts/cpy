@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+if (( $# != 1 )); then
+    print -u2 "usage: cpy <file>"
+    exit 2
+fi
+
+file=$1
+if [[ ! -f $file || ! -r $file ]]; then
+    print -u2 "cpy: not a readable file: $file"
+    exit 1
+fi
+
+if (( $+commands[pbcopy] )); then
+    pbcopy < "$file"
+elif (( $+commands[wl-copy] )); then
+    wl-copy < "$file"
+elif (( $+commands[xclip] )); then
+    xclip -selection clipboard < "$file"
+else
+    print -u2 "cpy: no clipboard command found (pbcopy, wl-copy, or xclip)"
+    exit 1
+fi
+
+print "Copied $file to the clipboard"
