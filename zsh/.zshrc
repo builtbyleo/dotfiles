@@ -12,6 +12,9 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 
 # executables
 path=(
+    $HOMEBREW_PREFIX/opt/ffmpeg-full/bin
+    $HOMEBREW_PREFIX/bin
+    $HOMEBREW_PREFIX/sbin
     $path
     $FOUNDRY
     $XDG_CACHE_HOME
