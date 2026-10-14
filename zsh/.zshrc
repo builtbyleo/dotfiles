@@ -8,16 +8,23 @@ export FOUNDRY="$HOME/.foundry/bin"
 export XDG_CACHE_HOME="$HOME/.cache"
 export HOMEBREW_PREFIX="/opt/homebrew"
 
+# ~~~~~~~~~~~ History + Options ~~~~~~~~~~~
+
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_all_dups hist_ignore_space share_history extended_history
+setopt interactive_comments no_beep
+
 # ~~~~~~~~~~~ Path Configuration ~~~~~~~~~~~
 
 # executables
 path=(
+    $HOME/.local/share/mise/shims
     $HOMEBREW_PREFIX/opt/ffmpeg-full/bin
     $HOMEBREW_PREFIX/bin
     $HOMEBREW_PREFIX/sbin
     $path
     $FOUNDRY
-    $XDG_CACHE_HOME
     $HOME/bin
     $HOME/.local/bin
     $SCRIPTS
@@ -39,8 +46,8 @@ fpath=(
 
 # ~~~~~~~~~~~ Aliases ~~~~~~~~~~~
 
-alias ls="eza --color=always --long --git --no-filesize --all --icons=always --no-time --no-user --no-permissions --group-directories-first"
-alias s="source ~/dotfiles/zsh/.zshrc"
+alias ls="eza --color=auto --long --git --no-filesize --all --icons=auto --no-time --no-user --no-permissions --group-directories-first"
+alias s="exec zsh"
 alias c="clear"
 alias v="nvim"
 alias t="tmux"
@@ -56,14 +63,20 @@ alias o="opencode"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 zstyle ':completion:*' menu no
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons=always $realpath'
 
-# only refresh dump after 24hrs
+# use the cached dump unless a completion dir changed since it was written
+# (e.g. brew install / gen-completions added a file), then rebuild it
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
-    compinit -C
+_zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+_stale_fpath=($^fpath(N-/e:'[[ $REPLY -nt $_zcompdump ]]':))
+if [[ -f $_zcompdump ]] && (( ! $#_stale_fpath )); then
+    compinit -C -d $_zcompdump
 else
-    compinit
+    rm -f $_zcompdump
+    compinit -d $_zcompdump
 fi
+unset _zcompdump _stale_fpath
 
 # ~~~~~~~~~~~ Sourcing and Plugins ~~~~~~~~~~~
 
@@ -72,9 +85,6 @@ source <(fzf --zsh)
 
 # fzf completions
 source ~/fzf-tab/fzf-tab.plugin.zsh
-
-# mise (maybe remove shims if causing issues)
-eval "$($HOMEBREW_PREFIX/bin/mise activate zsh --shims)"
 
 # atuin
 zvm_after_init_commands+=(
@@ -94,4 +104,4 @@ source ~/dotfiles/zsh/zsh/prompt.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # colour syntax highlights
-eval "$(/opt/homebrew/bin/zsh-patina activate)"
+eval "$($HOMEBREW_PREFIX/bin/zsh-patina activate)"
