@@ -47,11 +47,11 @@ fpath=(
 # ~~~~~~~~~~~ Aliases ~~~~~~~~~~~
 
 alias ls="eza --color=auto --long --git --no-filesize --all --icons=auto --no-time --no-user --no-permissions --group-directories-first"
+alias gl="git log --oneline --color=always | fzf --ansi --preview 'git show --color=always {1}'"
 alias s="exec zsh"
 alias c="clear"
 alias v="nvim"
 alias t="tmux"
-alias o="opencode"
 
 # ~~~~~~~~~~~ Completion ~~~~~~~~~~~
 
