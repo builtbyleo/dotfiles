@@ -76,7 +76,9 @@ return {
 			sources = {
 				default = { "lsp", "path", "buffer", "snippets" },
 			},
-			fuzzy = { implementation = "prefer_rust_with_warning" },
+			fuzzy = {
+				implementation = "rust",
+			},
 			enabled = function()
 				return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
 					and vim.bo.filetype ~= "grug-far"
