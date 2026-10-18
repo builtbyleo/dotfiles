@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
-	lazy = true,
-	event = { "BufReadPre", "BufNewFile" },
+	event = "BufWritePre",
+	cmd = "ConformInfo",
 	config = function()
 		local conform = require("conform")
 		conform.setup({
@@ -20,19 +20,9 @@ return {
 				python = { "ruff" },
 				solidity = { "forge_fmt" },
 				astro = { "oxfmt" },
-				sh = { "beautysh" },
-				zsh = { "beautysh" },
+				sh = { "shfmt" },
+				zsh = { "shfmt" },
 				markdown = { "oxfmt" },
-			},
-			formatters = {
-				prettier = {
-					cwd = require("conform.util").root_file({
-						".prettierrc",
-						".prettierrc.json",
-						".prettier.config.js",
-					}),
-					require_cwd = true,
-				},
 			},
 			format_on_save = function()
 				if vim.g.autoformat == false then
