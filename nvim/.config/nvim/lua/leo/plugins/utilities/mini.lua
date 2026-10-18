@@ -13,6 +13,7 @@ return {
 			require("mini.pairs").setup()
 			require("mini.comment").setup()
 			require("mini.bracketed").setup()
+			require("mini.move").setup({ mappings = { down = "J", up = "K" } })
 			require("mini.cursorword").setup()
 			require("mini.icons").setup()
 			require("mini.icons").mock_nvim_web_devicons()
