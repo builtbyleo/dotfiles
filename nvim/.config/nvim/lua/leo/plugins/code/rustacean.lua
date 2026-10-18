@@ -3,14 +3,12 @@ return {
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		opts = {},
-		ft = "toml",
-		lazy = true,
 	},
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^9",
 		lazy = false,
-		config = function()
+		init = function()
 			vim.g.rustaceanvim = {
 				dap = {},
 				server = {

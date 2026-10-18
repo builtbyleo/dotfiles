@@ -24,5 +24,9 @@ return {
 			},
 		},
 	},
-	{ "dmmulroy/ts-error-translator.nvim", opts = {} },
+	{
+		"dmmulroy/ts-error-translator.nvim",
+		ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte", "astro" },
+		opts = {},
+	},
 }

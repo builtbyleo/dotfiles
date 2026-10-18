@@ -9,6 +9,9 @@ return {
 				move_up = { "<C-k>" },
 				move_down = { "<C-j>" },
 			},
+			hl = {
+				title = "FloatTitle",
+			},
 		},
 	       --stylua: ignore
 		keys = {
