@@ -1,6 +1,5 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.o.shell = "/bin/zsh"
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -8,7 +7,6 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.wrap = true
@@ -18,19 +16,26 @@ vim.opt.breakindent = true -- Preserve indentation for wrapped lines
 vim.opt.ignorecase = true -- ignore case when searching
 vim.opt.smartcase = true -- case sensitive when search has mixed case
 
-vim.opt.termguicolors = true
 vim.opt.background = "dark"
+vim.o.winborder = "rounded"
 
 vim.opt.scrolloff = 10
+vim.opt.signcolumn = "yes"
+vim.opt.laststatus = 3
+vim.opt.virtualedit = "block"
+vim.opt.updatetime = 250
+vim.opt.confirm = true
 
 vim.opt.hlsearch = false
+vim.opt.inccommand = "split"
 
 -- window split
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- turn off swapfile
+-- turn off swapfile, keep undo history between sessions
 vim.opt.swapfile = false
+vim.opt.undofile = true
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -52,8 +57,6 @@ function _G.simple_tabline()
 		local selected = tab == vim.fn.tabpagenr()
 		local window = vim.fn.tabpagewinnr(tab)
 		local buffer = vim.fn.tabpagebuflist(tab)[window]
-		local name = vim.fn.bufname(buffer)
-
 		local name = vim.fn.bufname(buffer)
 
 		if name == "" then
