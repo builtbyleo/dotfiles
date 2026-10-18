@@ -1,6 +1,5 @@
-vim.diagnostic.config({ virtual_text = false })
-
 vim.diagnostic.config({
+	virtual_text = false,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "",
@@ -20,7 +19,7 @@ vim.diagnostic.config({
 local keymap = vim.keymap
 
 keymap.set("n", "Q", function()
-	vim.diagnostic.open_float({ border = "rounded" })
+	vim.diagnostic.open_float()
 end, { desc = "open floating diagnostics" })
 
 keymap.set("n", "gK", function()
@@ -28,25 +27,9 @@ keymap.set("n", "gK", function()
 end, { desc = "Signature Help" })
 
 keymap.set("n", "K", function()
-	vim.lsp.buf.hover({
-		border = "rounded",
-	})
+	vim.lsp.buf.hover()
 end, { desc = "Show documentation for what is under cursor" })
 
-vim.g["diagnostics_active"] = true
-function Toggle_diagnostics()
-	if vim.g.diagnostics_active then
-		vim.g.diagnostics_active = false
-		vim.diagnostic.enable(false)
-	else
-		vim.g.diagnostics_active = true
-		vim.diagnostic.enable()
-	end
-end
-
-vim.keymap.set(
-	"n",
-	"<leader>xd",
-	Toggle_diagnostics,
-	{ noremap = true, silent = true, desc = "Toggle vim diagnostics" }
-)
+keymap.set("n", "<leader>xd", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { silent = true, desc = "Toggle vim diagnostics" })
