@@ -31,7 +31,6 @@ return {
 				nerd_font_variant = "mono",
 			},
 			completion = {
-				documentation = { window = { border = "rounded" } },
 				menu = {
 					auto_show = function(ctx)
 						if ctx.mode == "cmdline" then
@@ -56,7 +55,6 @@ return {
 						return true
 					end,
 					scrollbar = false,
-					border = "rounded",
 					draw = {
 						columns = { { "kind_icon" }, { "label", gap = 1 } },
 						components = {
@@ -72,7 +70,7 @@ return {
 					},
 				},
 			},
-			signature = { enabled = true, window = { border = "rounded" } },
+			signature = { enabled = true },
 			sources = {
 				default = { "lsp", "path", "buffer", "snippets" },
 			},

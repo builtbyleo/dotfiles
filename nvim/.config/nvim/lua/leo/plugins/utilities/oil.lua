@@ -7,7 +7,6 @@ return {
 			padding = 2,
 			max_width = 0.6,
 			max_height = 0.7,
-			border = "rounded",
 		},
 		keymaps = {
 			["<BS>"] = { "actions.parent", mode = "n" },
