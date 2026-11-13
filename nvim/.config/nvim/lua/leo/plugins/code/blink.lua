@@ -2,7 +2,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = { "saghen/blink.lib", "rafamadriz/friendly-snippets", "xzbdmw/colorful-menu.nvim" },
-		event = { "InsertEnter" },
 		build = function()
 			require("blink.cmp").build():pwait()
 		end,
