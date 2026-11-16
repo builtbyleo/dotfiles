@@ -1,27 +1,35 @@
 return {
-	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{
-		"esmuellert/codediff.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		cmd = "CodeDiff",
+		"CoreyKaylor/diffbandit.nvim",
+		cmd = {
+			"DiffBandit",
+			"DiffBanditBuffers",
+			"DiffBanditFolderDiff",
+			"DiffBanditGit",
+			"DiffBanditGitCurrent",
+			"DiffBanditCommitPanel",
+			"DiffBanditGitMenu",
+			"DiffBanditGitLog",
+			"DiffBanditGitCommit",
+			"DiffBanditGitCompare",
+			"DiffBanditGitCheckout",
+			"DiffBanditMerge",
+		},
 		opts = {
-			highlights = {
-				-- line_insert = "#20281C",
-				-- line_delete = "#281C22",
-				-- char_insert = "#3fb950",
-				-- char_delete = "#ff7b72",
-			},
-			keymaps = {
-				view = {
-					next_hunk = "]h",
-					prev_hunk = "[h",
+			actions = { keys = { toggle_stage = "-" } },
+			git = { panel = { keys = { toggle_stage = "-", toggle_amend = "ga" } } },
+			folder = { keys = { toggle_expand = "<Tab>" } },
+			ui = {
+				kitty = {
+					cell_px = { 17, 41 },
+					image_colorspace = "srgb",
 				},
 			},
 		},
-	      -- stylua: ignore
-	       keys = {
-	           { "<leader>gd",":CodeDiff file HEAD<CR>", desc = "Diff entire buffer" },
-	       },
+		-- stylua: ignore
+		keys = {
+			{ "<leader>gd", "<Cmd>DiffBanditGitCurrent<CR>", desc = "Diff entire buffer" },
+		},
 	},
 	{
 		"nvim-mini/mini.nvim",
