@@ -41,7 +41,7 @@ return {
 	settings = {
 		Lua = {
 			diagnostics = {
-				globals = { "vim", "Snacks", "MiniDiff" },
+				globals = { "vim", "Snacks", "MiniDiff", "rex" },
 				disable = { "lowercase-global" },
 			},
 		},
